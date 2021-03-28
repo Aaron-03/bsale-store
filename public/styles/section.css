@@ -1,0 +1,32 @@
+
+#product__resume {
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    box-shadow: 0px 5px 5px 1px rgba(0, 0, 0, 0.1);
+}
+
+#product__resume p {
+    font-size: 16pt;
+}
+
+.product__pages {
+    margin-top: 1rem;
+}
+.product__pages button {
+    cursor: pointer;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    outline: none;
+    font-weight: 500;
+    margin-right: 0.5rem;
+    background-color: transparent;
+}
+
+.product__pages button.active {
+    border-color: rgba(255, 0, 0, 0.5) rgba(255, 166, 0, 0.5);
+}

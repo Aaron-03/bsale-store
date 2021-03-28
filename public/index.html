@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio Chévere</title>
+
+    <link rel="stylesheet" href="./styles/base.css">
+    <link rel="stylesheet" href="./styles/header.css">
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/aside.css">
+    <link rel="stylesheet" href="./styles/section.css">
+</head>
+<body>
+    <div id="container">
+
+        <header class="header">
+            <div class="header__container">
+                <h2>Bsale Test</h2>
+
+                <form class="header__form">
+                    <div class="header__field">
+                        <input
+                            id="header__input-name"
+                            type="text"
+                            placeholder="Busca tu producto favorito"
+                            name="name"
+                        />
+
+                        <button>
+                            <img
+                                src="./img/lupa.svg"
+                                alt=""
+                            >
+                        </button>
+                    </div>
+                </form>
+
+                <div class="header__shop">
+                    <button title="Añadir al carrito">
+                        <img
+                            src="./img/shop.svg"
+                            alt="Añadir al carrito"
+                            class="article_shop"
+                        />
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <aside class="filter">
+                <form class="filter__form">
+                    <div class="filter__field">
+                        <h4>Categorías</h4>
+                        <hr>
+
+                        <ul class="filter__categories">
+                            <li>
+                                <input
+                                    data-id="1"
+                                    type="checkbox"
+                                >
+
+                                <span>Categoría chévere (25)</span>
+                            </li>
+
+                            <li>
+                                <input
+                                    data-id="2"
+                                    type="checkbox"
+                                >
+
+                                <span>Categoría chévere (25)</span>
+                            </li>
+
+                            <li>
+                                <input
+                                    data-id="3"
+                                    type="checkbox"
+                                >
+
+                                <span>Categoría chévere (25)</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="filter__field">
+                        <h4>Precios</h4>
+                        <hr>
+
+                        <ul class="filter__prices">
+                            <li>
+                                <input
+                                    id="price1"
+                                    type="radio"
+                                    name="price"
+                                    value="0_1500"
+                                >
+                                <label for="price1">Hasta 1500 (12)</label>
+                            </li>
+                            <li>
+                                <input
+                                    id="price2"
+                                    type="radio"
+                                    name="price"
+                                    value="1500_3500"
+                                >
+                                <label for="price2">1500 hasta 4500 (12)</label>
+                            </li>
+                            <li>
+                                <input
+                                    id="price3"
+                                    type="radio"
+                                    name="price"
+                                    value="3500_7500"
+                                >
+                                <label for="price3">7500 hasta 10500 (14)</label>
+                            </li>
+                        </ul>
+
+                        <div class="filter__prices-custom">
+                            <input
+                                type="text"
+                                placeholder="Min."
+                            >
+                            hasta
+                            <input
+                                type="text"
+                                placeholder="Max."
+                            >
+                        </div>
+                    </div>
+
+                    <div class="filter__container-btn">
+                        <button
+                            class="filter__btn"
+                        >Buscar</button>
+                    </div>
+                </form>
+            </aside>
+
+            <section>
+                <div id="product__resume">
+                    <p>Total <span id="product__total">15</span> productos</p>
+                    <hr>
+                    <div class="product__pages">
+                        <button type="button">1</button>
+                        <button>2</button>
+                        <button>3</button>
+                        <button>4</button>
+                        <button>5</button>
+                    </div>
+                </div>
+
+                <div id="article__container" class="article__container">
+                    <article class="article">
+                        <div class="article__cover">
+                            <img
+                                src="https://dojiw2m9tvv09.cloudfront.net/11132/product/cocazero9766.jpg"
+                                alt=""
+                            />
+                        </div>
+                
+                        <h4 class="article__title">Nombre del producto</h4>
+                        <hr />
+                
+                        <div class="article__description">
+                            <label class="article_price">$ 654asdas</label>
+                
+                            <button title="Añadir al carrito">
+                                <img
+                                    src="./img/shop.svg"
+                                    alt="Añadir al carrito"
+                                    class="article_shop"
+                                />
+                            </button>
+                        </div>
+                    </article>
+            
+                    <article class="article">
+                        <div class="article__cover">
+                            <img
+                                src="https://dojiw2m9tvv09.cloudfront.net/11132/product/cocazero9766.jpg"
+                                alt=""
+                            />
+                        </div>
+                
+                        <h4 class="article__title">Nombre del producto</h4>
+                        <hr />
+                
+                        <div class="article__description">
+                            <label class="article_price">$ 654asdas</label>
+                
+                            <button title="Añadir al carrito">
+                                <img
+                                    src="./img/shop.svg"
+                                    alt="Añadir al carrito"
+                                    class="article_shop"
+                                />
+                            </button>
+                        </div>
+                    </article>
+            
+                    <article class="article">
+                        <div class="article__cover">
+                            <img
+                                src="https://dojiw2m9tvv09.cloudfront.net/11132/product/cocazero9766.jpg"
+                                alt=""
+                            />
+                        </div>
+                
+                        <h4 class="article__title">Nombre del producto</h4>
+                        <hr />
+                
+                        <div class="article__description">
+                            <label class="article_price">$ 654asdas</label>
+                
+                            <button title="Añadir al carrito">
+                                <img
+                                    src="./img/shop.svg"
+                                    alt="Añadir al carrito"
+                                    class="article_shop"
+                                />
+                            </button>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+    </div>
+
+</body>
+
+    <script src="./scripts/components.js"></script>
+    <script src="./scripts/index.js"></script>
+</html>
