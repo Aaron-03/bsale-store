@@ -1,5 +1,9 @@
 
-#product__resume {
+main {
+    padding-bottom: 5rem;
+}
+
+.product__resume {
     background-color: white;
     border-radius: 0.5rem;
     padding: 1rem;
@@ -7,7 +11,7 @@
     box-shadow: 0px 5px 5px 1px rgba(0, 0, 0, 0.1);
 }
 
-#product__resume p {
+.product__resume p {
     font-size: 16pt;
 }
 
@@ -30,3 +34,9 @@
 .product__pages button.active {
     border-color: rgba(255, 0, 0, 0.5) rgba(255, 166, 0, 0.5);
 }
+
+#product__resume-footer {
+    margin-top: 2rem;
+    display: none;
+}
+

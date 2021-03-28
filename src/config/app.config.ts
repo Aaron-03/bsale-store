@@ -3,6 +3,10 @@ import morgan from 'morgan';
 import path from 'path';
 import dotenv from 'dotenv';
 
+/**
+ * API Routes
+ */
+import CategoryRoutes from '../routes/category.routes';
 import ProductRoutes from '../routes/product.routes';
 
 
@@ -24,6 +28,7 @@ export default class App {
 
     routes() {
         this.app.use('/api/products', ProductRoutes);
+        this.app.use('/api/categories', CategoryRoutes);
     }
 
     middlewares() {

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./styles/base.css">
     <link rel="stylesheet" href="./styles/header.css">
     <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/article.css">
     <link rel="stylesheet" href="./styles/aside.css">
     <link rel="stylesheet" href="./styles/section.css">
 </head>
@@ -38,6 +39,7 @@
                 </form>
 
                 <div class="header__shop">
+                    <span id="shopQuantity">100</span>
                     <button title="Añadir al carrito">
                         <img
                             src="./img/shop.svg"
@@ -94,39 +96,54 @@
                             <li>
                                 <input
                                     id="price1"
+                                    class="price__item"
                                     type="radio"
                                     name="price"
                                     value="0_1500"
                                 >
-                                <label for="price1">Hasta 1500 (12)</label>
+                                <label for="price1">Hasta 1500</label>
                             </li>
                             <li>
                                 <input
                                     id="price2"
+                                    class="price__item"
                                     type="radio"
                                     name="price"
                                     value="1500_3500"
                                 >
-                                <label for="price2">1500 hasta 4500 (12)</label>
+                                <label for="price2">1500 hasta 4500</label>
                             </li>
                             <li>
                                 <input
                                     id="price3"
+                                    class="price__item"
                                     type="radio"
                                     name="price"
                                     value="3500_7500"
                                 >
-                                <label for="price3">7500 hasta 10500 (14)</label>
+                                <label for="price3">3500 hasta 7500</label>
+                            </li>
+                            <li>
+                                <input
+                                    id="price4"
+                                    class="price__item"
+                                    type="radio"
+                                    name="price"
+                                    value="7500_1000000"
+                                >
+                                <label for="price4">Mayor a 7500</label>
                             </li>
                         </ul>
 
                         <div class="filter__prices-custom">
                             <input
+                                id="priceMin"
                                 type="text"
                                 placeholder="Min."
                             >
                             hasta
                             <input
+                                id="priceMax"
                                 type="text"
                                 placeholder="Max."
                             >
@@ -135,6 +152,14 @@
 
                     <div class="filter__container-btn">
                         <button
+                            id="btnResetFilter"
+                            type="button"
+                            class="filter__btn filter__btn-reset"
+                        >Reset</button>
+
+                        <button
+                            id="btnSearchByPrice"
+                            type="button"
                             class="filter__btn"
                         >Buscar</button>
                     </div>
@@ -142,8 +167,8 @@
             </aside>
 
             <section>
-                <div id="product__resume">
-                    <p>Total <span id="product__total">15</span> productos</p>
+                <div class="product__resume">
+                    <p>Total <span class="product__total">15</span> productos</p>
                     <hr>
                     <div class="product__pages">
                         <button type="button">1</button>
@@ -167,13 +192,34 @@
                         <hr />
                 
                         <div class="article__description">
-                            <label class="article_price">$ 654asdas</label>
+                            <label class="article_price">$ 7500</label>
                 
-                            <button title="Añadir al carrito">
+                            <span>bebida energetica</span>
+                        </div>
+
+                        <div class="article__shop">
+                            <div class="article__shop-buttons">
+                                <button
+                                    type="button"
+                                    class="quantity quantityMin"
+                                >-</button>
+                                <label data-id="quantity1">0</label>
+                                <button
+                                    type="button"
+                                    class="quantity quantitySum"
+                                >+</button>
+                            </div>
+
+                            <button
+                                type="button"
+                                class="article__shop-btnAdd"
+                                title="Añadir al carrito"
+                            >
+                                Añadir
                                 <img
                                     src="./img/shop.svg"
                                     alt="Añadir al carrito"
-                                    class="article_shop"
+                                    class="article_btnShop"
                                 />
                             </button>
                         </div>
@@ -191,13 +237,34 @@
                         <hr />
                 
                         <div class="article__description">
-                            <label class="article_price">$ 654asdas</label>
+                            <label class="article_price">$ 7500</label>
                 
-                            <button title="Añadir al carrito">
+                            <span>bebida energetica</span>
+                        </div>
+
+                        <div class="article__shop">
+                            <div class="article__shop-buttons">
+                                <button
+                                    type="button"
+                                    class="quantity quantityMin"
+                                >-</button>
+                                <label data-id="quantity1">0</label>
+                                <button
+                                    type="button"
+                                    class="quantity quantitySum"
+                                >+</button>
+                            </div>
+
+                            <button
+                                type="button"
+                                class="article__shop-btnAdd"
+                                title="Añadir al carrito"
+                            >
+                                Añadir
                                 <img
                                     src="./img/shop.svg"
                                     alt="Añadir al carrito"
-                                    class="article_shop"
+                                    class="article_btnShop"
                                 />
                             </button>
                         </div>
@@ -215,17 +282,50 @@
                         <hr />
                 
                         <div class="article__description">
-                            <label class="article_price">$ 654asdas</label>
+                            <label class="article_price">$ 7500</label>
                 
-                            <button title="Añadir al carrito">
+                            <span>bebida energetica</span>
+                        </div>
+
+                        <div class="article__shop">
+                            <div class="article__shop-buttons">
+                                <button
+                                    type="button"
+                                    class="quantity quantityMin"
+                                >-</button>
+                                <label data-id="quantity1">0</label>
+                                <button
+                                    type="button"
+                                    class="quantity quantitySum"
+                                >+</button>
+                            </div>
+
+                            <button
+                                type="button"
+                                class="article__shop-btnAdd"
+                                title="Añadir al carrito"
+                            >
+                                Añadir
                                 <img
                                     src="./img/shop.svg"
                                     alt="Añadir al carrito"
-                                    class="article_shop"
+                                    class="article_btnShop"
                                 />
                             </button>
                         </div>
                     </article>
+                </div>
+
+                <div id="product__resume-footer" class="product__resume">
+                    <p>Total <span class="product__total">15</span> productos</p>
+                    <hr>
+                    <div class="product__pages">
+                        <button type="button">1</button>
+                        <button>2</button>
+                        <button>3</button>
+                        <button>4</button>
+                        <button>5</button>
+                    </div>
                 </div>
             </section>
         </main>

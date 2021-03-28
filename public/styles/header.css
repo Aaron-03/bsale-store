@@ -6,6 +6,7 @@
     right: 0;
     background-color: white;
     box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
 }
 
 .header .header__container {
@@ -54,15 +55,34 @@
     height: 2rem;
 }
 
+.header__shop {
+    position: relative;
+}
+
 .header__shop button {
     border: none;
     outline: none;
     padding: 0.5rem;
     border-radius: 0.5rem;
-    background-color: rgba(0, 0, 0, 0.4);
+    background: linear-gradient(to right, rgba(255, 166, 0, 0.5), rgba(255, 0, 0, 0.5));
 }
 
 .header__shop button img {
     width: 2rem;
     height: 2rem;
+}
+
+#shopQuantity {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: #562ecf;
+    padding: 0.2rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
 }
