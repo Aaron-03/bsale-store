@@ -46,6 +46,11 @@
     font-weight: 600;
 }
 
+#orderOptions {
+    margin-top: 1rem;
+    padding: 0.5rem;
+}
+
 /* List item filter by price */
 .filter__prices li {
     margin-top: 0.8rem;

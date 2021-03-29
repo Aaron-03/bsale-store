@@ -98,7 +98,10 @@ const incrementQuantity = ({ target }) => {
 
 // Go to whatsapp for the purchase
 const buyFromWhatsapp = () => {
-    console.log('ascascascascacasc')
+    const phone = '51960229721';
+    const message = 'Muchas gracias por ver el proyecto, muy pronto se ordenará de verdad :)!';
+    const link = `https://wa.me/${ phone }?text=${ message }`;
+    window.open(link, '_blank');
 }
 
 // Show or hide the shopping cart

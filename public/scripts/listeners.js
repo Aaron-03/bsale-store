@@ -13,10 +13,19 @@ btnResetFilter.addEventListener('click', resetFilter);
 // The search button of the filter will search for the prices entered
 btnSearchByPrice.addEventListener('click', searchByPriceMinMax);
 
+// orderOptions
+orderOptions.addEventListener('change', (e) => {
+    orderByPrice(e);
+    loadProducts(productList);
+});
 
 // Validate the characters entered for the filter prices
 priceMin.addEventListener('keyup', writePrice);
 priceMax.addEventListener('keyup', writePrice);
+
+
+// Search by product name
+btnSearch.addEventListener('click', searchByName);
 
 
 // Increase and decrease the number of products to purchase

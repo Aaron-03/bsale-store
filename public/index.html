@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio Chévere</title>
+    <title>Bsale Store</title>
 
     <link rel="stylesheet" href="./styles/base.css">
     <link rel="stylesheet" href="./styles/header.css">
@@ -30,7 +30,10 @@
                             name="name"
                         />
 
-                        <button>
+                        <button
+                            id="btnSearch"
+                            type="button"
+                        >
                             <img
                                 src="./img/lupa.svg"
                                 alt=""
@@ -71,6 +74,17 @@
                     </div>
 
                     <div class="filter__field">
+                        <h4>Ordenar por</h4>
+                        <hr>
+
+                        <select id="orderOptions">
+                            <option value="">--- Elige una opción ---</option>
+                            <option value="min_max">Menor a mayor precio</option>
+                            <option value="max_min">Mayor a menor precio</option>
+                        </select>
+                    </div>
+
+                    <div class="filter__field">
                         <h4>Precios</h4>
                         <hr>
 
@@ -97,7 +111,7 @@
                             id="btnResetFilter"
                             type="button"
                             class="filter__btn filter__btn-reset"
-                        >Reset</button>
+                        >Restaurar</button>
 
                         <button
                             id="btnSearchByPrice"
@@ -134,27 +148,8 @@
     </div>
 
     <div id="shop__list">
-        <h4>All Products to buy</h4>
+        <h4>Mi carrito de compras</h4>
         <ul class="shop__list">
-            <li class="shop__item">
-                <button
-                    type="button"
-                    class="btnCloseShopItem"
-                >X</button>
-                <div class="shop__item-header">
-                    <img
-                        src="https://dojiw2m9tvv09.cloudfront.net/11132/product/papaslisas7271.jpg"
-                        alt="Producto Chévere"
-                    >
-                </div>
-
-                <div class="shop__item-footer">
-                    <label>Producto Chévere</label>
-                    <p>Category: SNACK</p>
-                    <p>Unidades: 5</p>
-                    <p>Price: 5</p>
-                </div>
-            </li>
         </ul>
 
         <p id="shop__total">
@@ -171,13 +166,13 @@
             >
                 <img src="https://img.icons8.com/plasticine/100/000000/whatsapp.png"/>
 
-                Buy from Whatsapp
+                Ordenar por Whatsapp
             </button>
 
             <button
                 type="button"
                 onclick="showShopList(false)"
-            >Close</button>
+            >Cerrar</button>
         </div>
     </div>
 </body>

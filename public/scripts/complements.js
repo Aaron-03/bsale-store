@@ -128,6 +128,15 @@ const productResumeFooterVisible = (visible = true) => {
     product_resume_footer.style.display = visible === true ? 'block' : 'none';
 }
 
+// Order by price
+const orderByPrice = ({ target }) => {
+    if(target.value === 'min_max') {
+        productList = productList.sort((a, b) => a.price - b.price);
+    } else if (target.value === 'max_min') {
+        productList = productList.sort((a, b) => b.price - a.price);
+    }
+}
+
 
 /**
  * 
@@ -170,7 +179,7 @@ const loadShopList = () => {
     const productSize = productStorage.length || 0;
     
     if(productSize === 0) {
-        shop__list.innerHTML = '<p style="text-align: center; padding: 0.5rem;">No products</p>';
+        shop__list.innerHTML = '<p style="text-align: center; padding: 0.5rem;">No hay productos en el carrito</p>';
         btnWhatsapp.style.display = 'none';
     } else {
         shop__list.innerHTML = '';

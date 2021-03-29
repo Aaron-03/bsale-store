@@ -37,10 +37,7 @@ const getCategories = async () => {
 // Make a general query with all search criteria
 const sendData = async (name = '', category = '', prices = '', page = 1) => {
     let result = { error: false, data: null };
-    console.log('Name:' + name);
-    console.log('Category:' + category);
-    console.log('Prices:' + prices);
-    console.log('Page:' + page);
+    orderOptions.value = '';
 
     showLoading(1, true);
 

@@ -38,6 +38,12 @@
  // Product name input
  const inputName = document.getElementById('header__input-name');
 
+ // Search header button
+ const btnSearch = document.getElementById('btnSearch');
+
+ // Order options from filter
+ const orderOptions = document.getElementById('orderOptions');
+
  // Category list container
  const categoryContent = document.getElementsByClassName('filter__categories')[0];
 
