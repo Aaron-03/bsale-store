@@ -1,4 +1,8 @@
+/*
+*   Styles for category and price filtering
+*/
 
+/* Main filtrate container */
 .filter {
     background-color: white;
     width: 18rem;
@@ -8,18 +12,22 @@
     margin-right: 2rem;
 }
 
+/* Filtering container by category */
 .filter__field {
     margin-bottom: 2rem;
 }
 
+/* Filter title by category */
 .filter__field h4 {
     margin-bottom: 0.25rem;
 }
 
+/* List of categories */
 .filter__categories {
     margin-top: 0.5rem;
 }
 
+/* Category list item */
 .filter__categories li {
     margin-top: 0.5rem;
 }
@@ -29,6 +37,7 @@
     margin-right: 0.25rem;
 }
 
+/* Quantity of products per category */
 .filter__categories span {
     font-weight: 400;
 }
@@ -37,16 +46,19 @@
     font-weight: 600;
 }
 
+/* List item filter by price */
 .filter__prices li {
     margin-top: 0.8rem;
     text-decoration: underline;
     text-underline-position: under;
 }
 
+/* Filter item text by price */
 .filter__prices li label {
     cursor: pointer;
 }
 
+/* Radio input */
 .filter__prices li input {
     display: none;
 }
@@ -55,6 +67,7 @@
     font-weight: 600;
 }
 
+/* Custom price filtering container */
 .filter__prices-custom {
     display: flex;
     justify-content: space-between;
@@ -62,17 +75,20 @@
     margin-top: 1.5rem;
 }
 
+/* Custom price filtering fields */
 .filter__prices-custom input {
     width: 40%;
     padding: 0.5rem;
 }
 
+/* Filter Button Container (Reset & Search) */
 .filter__container-btn {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+/* Search button */
 .filter__btn {
     cursor: pointer;
     border: 2px solid;
@@ -94,11 +110,11 @@
 
 .filter__btn:hover {
     color: white;
-    /* border-color: dimgray; */
     text-shadow: 0px 0px 3px dimgray;
     background: linear-gradient(to right, rgba(255, 166, 0, 0.5), rgba(255, 0, 0, 0.5));
 }
 
+/* Reset button */
 .filter__btn-reset {
     border-color: dimgray;
 }

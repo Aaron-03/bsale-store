@@ -75,46 +75,6 @@
                         <hr>
 
                         <ul class="filter__prices">
-                            <li>
-                                <input
-                                    id="price1"
-                                    class="price__item"
-                                    type="radio"
-                                    name="price"
-                                    value="0_1500"
-                                >
-                                <label for="price1">Hasta 1500</label>
-                            </li>
-                            <li>
-                                <input
-                                    id="price2"
-                                    class="price__item"
-                                    type="radio"
-                                    name="price"
-                                    value="1500_3500"
-                                >
-                                <label for="price2">1500 hasta 4500</label>
-                            </li>
-                            <li>
-                                <input
-                                    id="price3"
-                                    class="price__item"
-                                    type="radio"
-                                    name="price"
-                                    value="3500_7500"
-                                >
-                                <label for="price3">3500 hasta 7500</label>
-                            </li>
-                            <li>
-                                <input
-                                    id="price4"
-                                    class="price__item"
-                                    type="radio"
-                                    name="price"
-                                    value="7500_1000000"
-                                >
-                                <label for="price4">Mayor a 7500</label>
-                            </li>
                         </ul>
 
                         <div class="filter__prices-custom">
@@ -197,8 +157,15 @@
             </li>
         </ul>
 
+        <p id="shop__total">
+            <label>Total:</label>
+            <span id="totalAmount">$0</span>
+        </p>
+        <hr>
+
         <div class="shop__buttons">
             <button
+                id="btnWhatsapp"
                 type="button"
                 onclick="buyFromWhatsapp()"
             >
@@ -217,8 +184,8 @@
     <script src="./scripts/base.js"></script>
     <script src="./scripts/components.js"></script>
     <script src="./scripts/complements.js"></script>
-    <script src="./scripts/index.js"></script>
+    <script src="./scripts/service.js"></script>
     <script src="./scripts/listeners.js"></script>
     <script src="./scripts/shop.js"></script>
-    
+    <script src="./scripts/index.js"></script>
 </html>

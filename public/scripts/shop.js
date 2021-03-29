@@ -1,18 +1,11 @@
-// window.onload = () => {
+/**
+ *
+ * Special functions for managing the shopping cart
+ */
 
-const addListenersMinSum = () => {
-    const btnsMin = document.getElementsByClassName('quantityMin');
-    const btnsSum = document.getElementsByClassName('quantitySum');
 
-    Array.from(btnsMin).forEach(btn => {
-        btn.addEventListener('click', decrementQuantity);
-    });
-
-    Array.from(btnsSum).forEach(btn => {
-        btn.addEventListener('click', incrementQuantity);
-    });
-}
-
+// Show "Product added" if the product is selected
+// Show options to choose quantity if the product is not selected
 const enabledContentShopAdded = (productId = '0', enabled = true) => {
     const shopContents = document.getElementsByClassName('article__shop');
     const shopAddedContents = document.getElementsByClassName('article__shop-added');
@@ -30,40 +23,32 @@ const enabledContentShopAdded = (productId = '0', enabled = true) => {
     });
 }
 
+// Add the product to the shopping cart
 const addArticleToShop = (productId) => {
-    const shopQuantity = document.getElementById('shopQuantity');
     const product = productList.find(p => p.id === productId) || null;
     if(product === null) {
         alert('Intente agregar el producto nuevamente');
         return;
     }
-    const quantity = getQuantityByProductId(productId);
-    product.quantity = quantity;
+
+    product.quantity = getQuantityByProductId(productId);
     productStorage.push(product);
+
     localStorage.setItem('shop', JSON.stringify(productStorage) || null);
     shopQuantity.textContent = productStorage.length;
-    enabledContentShopAdded(product.id, true);
+    enabledContentShopAdded(productId, true);
     loadShopList();
 }
 
+// Remove the product from shopping cart by id
 const removeArticleToShop = (productId) => {
-    const prodList = productStorage.filter(p => p.id != productId) || [];
-    localStorage.setItem('shop', JSON.stringify(prodList) || null);
+    productStorage = productStorage.filter(p => p.id != productId) || [];
+    localStorage.setItem('shop', JSON.stringify(productStorage) || null);
     enabledContentShopAdded(productId, false);
     loadShopList();
 }
 
-    
-
-// const addListenersBtnAddShop = () => {
-//     const btns = document.getElementsByClassName('article__shop-btnAdd');
-
-//     Array.from(btns).forEach(btn => {
-//         btn.addEventListener('click', addArticleToShop);
-//     });
-// }
-
-    
+// Show or hide the add to shopping cart button
 const enableBtnAddShop = (btnId = '', enabled = false) => {
     const btns = document.getElementsByClassName('article__shop-btnAdd');
 
@@ -74,6 +59,7 @@ const enableBtnAddShop = (btnId = '', enabled = false) => {
     });
 }
 
+// Decrease the quantity of the product
 const decrementQuantity = ({ target }) => {
     const quantities = document.querySelectorAll('.article__shop-buttons label');
 
@@ -93,40 +79,29 @@ const decrementQuantity = ({ target }) => {
     });
 }
 
-    
-    const incrementQuantity = ({ target }) => {
-        const quantities = document.querySelectorAll('.article__shop-buttons label');
+// Increase the quantity of the product
+const incrementQuantity = ({ target }) => {
+    const quantities = document.querySelectorAll('.article__shop-buttons label');
 
-        quantities.forEach(q => {
-            const btnId = q.getAttribute('data-id');
-            if(btnId === target.getAttribute('data-id')) {
-                let num = (parseInt(q.textContent) || 0) + 1;
-                if(num < 100) {
-                    enableBtnAddShop(btnId, true);
-                    q.textContent = num;
-                }
-                
+    quantities.forEach(q => {
+        const btnId = q.getAttribute('data-id');
+        if(btnId === target.getAttribute('data-id')) {
+            let num = (parseInt(q.textContent) || 0) + 1;
+            if(num < 100) {
+                enableBtnAddShop(btnId, true);
+                q.textContent = num;
             }
-        });
-    }
+            
+        }
+    });
+}
 
-    const buyFromWhatsapp = () => {
-        console.log('ascascascascacasc')
-    }
-    
-    const showShopList = (show = true) => {
-        const shop__list = document.getElementById('shop__list');
-        shop__list.style.right = show === true ? '0' : '-100%';
-    }
+// Go to whatsapp for the purchase
+const buyFromWhatsapp = () => {
+    console.log('ascascascascacasc')
+}
 
-
-    
-
-    
-   
-
-
-
-
-
-// };
+// Show or hide the shopping cart
+const showShopList = (show = true) => {
+    shop__list_id.style.right = show === true ? '0' : '-100%';
+}

@@ -1,5 +1,6 @@
-
-
+/**
+* Styles of the general container and main
+*/
 
 #container {
     min-height: 100vh;
@@ -10,4 +11,5 @@
 #container main {
     display: flex;
     justify-content: center;
+    padding-bottom: 5rem;
 }

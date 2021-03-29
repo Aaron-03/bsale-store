@@ -1,4 +1,8 @@
+/*
+    Styles for the header and its elements
+*/
 
+/* Main header */
 .header {
     position: fixed;
     top: 0;
@@ -9,6 +13,7 @@
     z-index: 10;
 }
 
+/* Header container */
 .header .header__container {
     display: flex;
     justify-content: space-between;
@@ -18,16 +23,19 @@
     padding: 1rem;
 }
 
+/* Search form by name */
 .header__form {
     width: 50%;
 }
 
+/* Field container */
 .header__field {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+/* Product name field */
 .header__field input {
     width: 100%;
     padding: 0.8rem;
@@ -41,6 +49,7 @@
     border-bottom: 2px solid rgba(0, 0, 0, 0.5);
 }
 
+/* Search button */
 .header__field button {
     cursor: pointer;
     margin-left: 0.8rem;
@@ -50,15 +59,18 @@
     background: linear-gradient(to right, rgba(255, 166, 0, 0.5), rgba(255, 0, 0, 0.5));
 }
 
+/* Search button image */
 .header__field button img {
     width: 2rem;
     height: 2rem;
 }
 
+/* Shopping cart container */
 .header__shop {
     position: relative;
 }
 
+/* Shopping cart button */
 .header__shop button {
     cursor: pointer;
     border: none;
@@ -68,11 +80,13 @@
     background: linear-gradient(to right, rgba(255, 166, 0, 0.5), rgba(255, 0, 0, 0.5));
 }
 
+/* Shopping cart button image */
 .header__shop button img {
     width: 2rem;
     height: 2rem;
 }
 
+/* Quantity of items in the basket */
 #shopQuantity {
     position: absolute;
     top: -15px;

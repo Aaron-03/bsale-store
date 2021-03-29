@@ -1,6 +1,10 @@
+/**
+ * Components that will be loaded
+ * in their respective lists
+ * (Filtering, products, shopping cart)
+ */
 
-
-
+// Product component
 const articleComponent = (article) => {
  
     const {
@@ -11,11 +15,13 @@ const articleComponent = (article) => {
         Category
     } = article;
 
+    const img = urlImage || 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSrUpaLKtPgK1gc7dPkMHCQDBpF2cSKiU957Sg-lQlDZywWlAc59MTpC6IBecGghRLILk&usqp=CAU';
+
     return `
         <article class="article" data-id="${ id }">
             <div class="article__cover">
                 <img
-                    src="${ urlImage || 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSrUpaLKtPgK1gc7dPkMHCQDBpF2cSKiU957Sg-lQlDZywWlAc59MTpC6IBecGghRLILk&usqp=CAU' }"
+                    src="${ img }"
                     alt="${ name }"
                 />
             </div>
@@ -69,16 +75,22 @@ const articleComponent = (article) => {
     `;
 }
 
+// Pagination component
 const pageComponent = (num = 1) => (
-    `<button type="button" data-page="${ num }">${ num }</button>`
+    `<button
+        type="button"
+        data-page="${ num }"
+        onclick="searchByPage(this)"
+    >${ num }</button>`
 );
 
+// Filtering category component
 const categoryComponent = ({ id, name, total }) => (
     `<li>
         <input
             data-id="${ id }"
             type="checkbox"
-            onChange="addCategory"
+            onchange="searchByCategory(this)"
         >
 
         <span>${ name } (${ total })</span>
@@ -86,7 +98,7 @@ const categoryComponent = ({ id, name, total }) => (
     `
 );
 
-
+// Product component in shopping cart list
 const shopItemComponent = ({
     id,
     name,
@@ -104,7 +116,7 @@ const shopItemComponent = ({
         >X</button>
         <div class="shop__item-header">
             <img
-                src="${ urlImage }"
+                src="${ urlImage || 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSrUpaLKtPgK1gc7dPkMHCQDBpF2cSKiU957Sg-lQlDZywWlAc59MTpC6IBecGghRLILk&usqp=CAU' }"
                 alt="${ name }"
             >
         </div>
@@ -119,11 +131,21 @@ const shopItemComponent = ({
     `
 );
 
-const loadShopList = () => {
-    const shop__list = document.getElementsByClassName('shop__list')[0];
-    shop__list.innerHTML = '';
-
-    productStorage.forEach(p => {
-        shop__list.innerHTML = shopItemComponent(p);
-    });
-}
+// Filtering price component
+const priceItemComponent = ({ id, name, value, text }) => (
+    `
+    <li>
+        <input
+            id="${ id }"
+            class="price__item"
+            type="radio"
+            name="${ name }"
+            value="${ value }"
+        >
+        <label
+            for="${ id }"
+            onclick="searchByPrices('${ value }')"
+        >${ text }</label>
+    </li>
+    `
+);
