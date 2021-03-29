@@ -5,6 +5,7 @@
 ### Búsqueda de productos por categoría
 ### Búsqueda de productos por rango de precios
 ### Búsqueda de productos multiatributo
+### Ordenar productos por menor y mayor precio
 ### Agregar al carrito de compras
 ### Resumen básico de pedido
 ### Responsive Web Design
