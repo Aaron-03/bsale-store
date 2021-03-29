@@ -69,6 +69,7 @@ export default class ProductController {
 
             if(category === null) {
                 result = await Product.findAndCountAll({
+                    include: Category,
                     where: {
                         name: {
                             [ Op.like ]: `%${ name }%`
@@ -82,6 +83,7 @@ export default class ProductController {
                 });
             } else {
                 result = await Product.findAndCountAll({
+                    include: Category,
                     where: {
                         name: {
                             [ Op.like ]: `%${ name }%`

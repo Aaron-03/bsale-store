@@ -1,85 +1,29 @@
-window.onload = () => {
-/**
- * Global variables
- */
- let nameText = '';
- let categoryId = 0;
- let prices = '';
- let pageNum = 1;
+// window.onload = () => {
 
- // Buttons (Search, Reset, PriceMin, PriceMax)
- const btnSearchByPrice = document.getElementById('btnSearchByPrice');
- const btnResetFilter = document.getElementById('btnResetFilter');
- let priceMin = document.getElementById('priceMin');
- let priceMax = document.getElementById('priceMax');
 
  
  
- const searchByName = async ({ target }) => {
-     nameText = target.value;
-     const { error, data } = await sendData(nameText, categoryId, prices, pageNum);
+const searchByName = async ({ target }) => {
+    nameText = target.value;
+    const { error, data } = await sendData(nameText, categoryId, prices, pageNum);
 
-     if(error === false) {
+    if(error === false) {
         loadProducts(data.products);
         loadPages(data.total);
-     }
- }
+    }
+}
  
  
- const inputName = document.getElementById('header__input-name');
  
- inputName.addEventListener('keyup', searchByName);
  
  
  /**
   * COMPONENTS
   */
  
- const articleComponent = (article) => {
  
-     const {
-         id,
-         name,
-         price,
-         urlImage
-     } = article;
  
-     return `
-         <article class="article" data-id="${ id }">
-             <div class="article__cover">
-                 <img
-                     src="${ urlImage || 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSrUpaLKtPgK1gc7dPkMHCQDBpF2cSKiU957Sg-lQlDZywWlAc59MTpC6IBecGghRLILk&usqp=CAU' }"
-                     alt="${ name }"
-                 />
-             </div>
- 
-             <h4 class="article__title">${ name }</h4>
-             <hr />
- 
-             <div class="article__description">
-                 <label class="article_price">$ ${ price }</label>
- 
-                 <button title="Añadir al carrito">
-                     <img
-                         src="./img/shop.svg"
-                         alt="Añadir al carrito"
-                         class="article_shop"
-                     />
-                 </button>
-             </div>
-         </article>
-     `;
- }
- 
- const loadProducts = (products = []) => {
-     const article__container = document.getElementById('article__container');
-     article__container.innerHTML = '';
- 
-     products.forEach(product => {
-         const html = articleComponent(product);
-         article__container.innerHTML += html;
-     });
- }
+
  
  const getCategorySelected = () => {
     const categories = document.querySelectorAll('.filter__categories input');
@@ -88,9 +32,7 @@ window.onload = () => {
      });
  }
  
- const pageComponent = (num = 1) => (
-    `<button type="button" data-page="${ num }">${ num }</button>`
- );
+ 
  
  const searchByPage = async ({ target }) => {
      pageNum = target.getAttribute('data-page');
@@ -108,7 +50,7 @@ window.onload = () => {
      loadProducts(data.products);
  }
  
- const loadPages = (productSize = 0) => {
+ const loadPages = (productSize = productList.length) => {
      const pages = document.getElementsByClassName('product__pages');
      const pageNumbers = Math.ceil(productSize / 12);
 
@@ -139,22 +81,17 @@ window.onload = () => {
  }
  
  const addCategory = async ({ target }) => {
-     categoryId = target.getAttribute('data-id');
-     const categories = document.querySelectorAll('.filter__categories input');
-     Array.from(categories).map(cat => {
-         if(cat.getAttribute('data-id') !== categoryId) {
-             cat.checked = false;
-         }
-         
-         return cat;
-     });
+    pageNum = 1; 
+    categoryId = target.getAttribute('data-id');
+
+    selectCategoryItem(categoryId);
      
-     const { error, data } = await sendData(nameText, categoryId, prices, pageNum);
- 
-     if(error === false) {
-         loadProducts(data.products);
-         loadPages(data.total);
-     }
+    const { error, data } = await sendData(nameText, categoryId, prices, pageNum);
+
+    if(error === false) {
+        loadProducts(data.products);
+        loadPages(data.total);
+    }
  }
  
  const setTotalProductText = (total = 0) => {
@@ -175,6 +112,9 @@ window.onload = () => {
      console.log('Category:' + category);
      console.log('Prices:' + prices);
      console.log('Page:' + page);
+
+     showLoading(1, true);
+
      try {
          const URL = `http://localhost:4000/api/products/?name=${ name }&category=${ category }&prices=${ prices }&page=${ page }`;
  
@@ -187,12 +127,14 @@ window.onload = () => {
          }
  
          result.data = data;
+         productList = data.products;
  
      } catch (error) {
          result.error = true;
+         showLoading(1, false);
          alert('Error al obtener productos');
      }
- 
+     showLoading(1, false);
      return result;
  }
 
@@ -206,28 +148,13 @@ window.onload = () => {
     }
  }
  
- const selectPrices = () => {
-    const pricesItem = document.querySelectorAll('.price__item');
 
-    Array.from(pricesItem).forEach(p => {
-        p.addEventListener('click', searchByPrices);
-    });
- }
 
- const categoryComponent = ({ id, name, total }) => (
-    `<li>
-        <input
-            data-id="${ id }"
-            type="checkbox"
-        >
 
-        <span>${ name } (${ total })</span>
-    </li>
-    `
- );
+
+ 
 
  const loadCategories = (categories = []) => {
-    const categoryContent = document.getElementsByClassName('filter__categories')[0];
     categoryContent.innerHTML = '';
     categories.forEach(category => {
         categoryContent.innerHTML += categoryComponent(category);
@@ -237,6 +164,8 @@ window.onload = () => {
  }
 
  const getCategories = async () => {
+
+    showLoading(0, true);
     try {
         const response = await fetch('http://localhost:4000/api/categories');
         const data = await response.json();
@@ -247,13 +176,15 @@ window.onload = () => {
             alert('Error al obtener categorías');
         }
     } catch (error) {
+        showLoading(0, false);
         console.log(error);
     }
+    showLoading(0, false);
  }
 
  const searchByPriceMinMax = async () => {
     let priceMinVal = priceMin.value || '0';
-    let priceMaxVal = priceMin.value || '10000000';
+    let priceMaxVal = priceMax.value || '10000000';
 
     const priceMinMax = `${ priceMinVal }_${ priceMaxVal }`;
     const { error, data } = await sendData(nameText, categoryId, priceMinMax, pageNum);
@@ -266,29 +197,15 @@ window.onload = () => {
 
  btnSearchByPrice.addEventListener('click', searchByPriceMinMax);
 
- const resetCategories = () => {
-    const categories = document.querySelectorAll('.filter__categories input');
-    Array.from(categories).map(cat => {
-        cat.checked = false;
-        return cat;
-    });
 
-    categoryId = -1;
- }
-
- const resetPriceItems = () => {
-    const pricesItem = document.querySelectorAll('.price__item');
-
-    Array.from(pricesItem).forEach(pricesItem => {
-        pricesItem.checked = false;
-    });
-
-    prices = '0_1000000';
- }
 
  const resetFilter = () => {
     priceMin.value = '';
     priceMax.value = '';
+    categoryId = -1;
+    prices = '0_1000000';
+    pageNum = 1;
+    nameText = '';
 
     resetCategories();
     resetPriceItems();
@@ -298,11 +215,13 @@ window.onload = () => {
 
  
 
- btnResetFilter.addEventListener('click', resetFilter);
  
- selectPrices();
+ 
+ 
+ //selectPrices();
  getCategories();
  getCategorySelected();
- //searchByPriceMinMax();
+ setCategoryColor();
+ searchByPriceMinMax();
  //sendData();
-}
+// }
