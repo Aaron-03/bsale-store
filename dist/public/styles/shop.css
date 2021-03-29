@@ -1,0 +1,134 @@
+/*
+Styles of the list of products to buy
+*/
+
+/* General container of product basket */
+#shop__list {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: -100%;
+    width: 18rem;
+    padding: 0.5rem;
+    color: dimgray;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    z-index: 100;
+}
+
+#shop__list.active {
+    right: 0;
+}
+
+/* Products basket title */
+#shop__list h4 {
+    text-align: center;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* List of items in the basket */
+.shop__list {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Basket item */
+.shop__item {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* Basket item image container */
+.shop__item-header {
+    width: 6rem;
+    max-height: 12rem;
+}
+
+/* Basket item image */
+.shop__item-header img {
+    width: 100%;
+    height: auto;
+}
+
+/* Basket item features */
+.shop__item-footer {
+    width: 100%;
+    padding-left: 1rem;
+}
+
+/* Whatsapp button container and close */
+.shop__buttons {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+}
+
+/* Total amount container */
+#shop__total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+/* Whatsapp button and close */
+.shop__buttons button {
+    cursor: pointer;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    outline: none;
+    color: white;
+}
+
+.shop__buttons button:hover {
+    filter: brightness(1.1);
+}
+
+/* Whatsapp button */
+.shop__buttons button:nth-child(1) {
+    width: 80%;
+    background-color: #60BE92;
+    margin: auto;
+    margin-bottom: 1rem;
+}
+
+/* Whatsapp button icon */
+.shop__buttons button:nth-child(1) img {
+    width: 2.8rem;
+    height: 2.8rem;
+}
+
+/* Close list window button */
+.shop__buttons button:nth-child(2) {
+    height: 2rem;
+    width: 35%;
+    background-color: dimgray;
+    margin: auto;
+}
+
+/* Remove item button */
+.btnCloseShopItem {
+    cursor: pointer;
+    border: none;
+    position: absolute;
+    top: -10px;
+    right: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    outline: none;
+    border-radius: 0.5rem;
+    background: dimgray;
+    text-align: center;
+    color: white;
+    font-size: 8pt;
+}

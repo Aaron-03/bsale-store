@@ -1,0 +1,38 @@
+
+/* Responsive for tablets and mobiles */
+@media screen and (max-width: 1030px) {
+    #container {
+        padding-top: 14rem;
+    }
+    .header .header__container {
+        flex-direction: column;
+    }
+
+    .header__form {
+        width: 100%;
+        margin-top: 0.5rem;
+        margin-bottom: 1.8rem;
+    }
+
+    .header__field input {
+        font-size: 10pt;
+    }
+
+    main {
+        flex-direction: column;
+    }
+
+    main .filter {
+        width: 100%;
+    }
+
+    main aside form {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    #btnResetFilter {
+        margin-right: 1rem;
+    }
+}

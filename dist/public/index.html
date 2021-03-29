@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bsale Store</title>
+
+    <link rel="stylesheet" href="./styles/base.css">
+    <link rel="stylesheet" href="./styles/header.css">
+    <link rel="stylesheet" href="./styles/footer.css">
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/article.css">
+    <link rel="stylesheet" href="./styles/aside.css">
+    <link rel="stylesheet" href="./styles/section.css">
+    <link rel="stylesheet" href="./styles/shop.css">
+    <link rel="stylesheet" href="./styles/responsive/main.css">
+</head>
+<body>
+    <div id="container">
+
+        <header class="header">
+            <div class="header__container">
+                <h2>Bsale Test</h2>
+
+                <form class="header__form">
+                    <div class="header__field">
+                        <input
+                            id="header__input-name"
+                            type="text"
+                            placeholder="Busca tu producto favorito"
+                            name="name"
+                        />
+
+                        <button
+                            id="btnSearch"
+                            type="button"
+                        >
+                            <img
+                                src="./img/lupa.svg"
+                                alt=""
+                            >
+                        </button>
+                    </div>
+                </form>
+
+                <div class="header__shop">
+                    <span id="shopQuantity">0</span>
+                    <button
+                        type="button"
+                        title="Carrito de compras"
+                        onclick="showShopList()"
+                    >
+                        <img
+                            src="./img/shop.svg"
+                            alt="Añadir al carrito"
+                            class="article_shop"
+                        />
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <aside class="filter">
+                <form class="filter__form">
+                    <div class="filter__field">
+                        <h4>Categorías</h4>
+                        <hr>
+
+                        <ul class="filter__categories">
+                            <div class="loading loading__0">
+                                <div></div>
+                            </div>
+                        </ul>
+                    </div>
+
+                    <div class="filter__field">
+                        <h4>Ordenar por</h4>
+                        <hr>
+
+                        <select id="orderOptions">
+                            <option value="">--- Elige una opción ---</option>
+                            <option value="min_max">Menor a mayor precio</option>
+                            <option value="max_min">Mayor a menor precio</option>
+                        </select>
+                    </div>
+
+                    <div class="filter__field">
+                        <h4>Precios</h4>
+                        <hr>
+
+                        <ul class="filter__prices">
+                        </ul>
+
+                        <div class="filter__prices-custom">
+                            <input
+                                id="priceMin"
+                                type="text"
+                                placeholder="Min."
+                            >
+                            hasta
+                            <input
+                                id="priceMax"
+                                type="text"
+                                placeholder="Max."
+                            >
+                        </div>
+                    </div>
+
+                    <div class="filter__container-btn">
+                        <button
+                            id="btnResetFilter"
+                            type="button"
+                            class="filter__btn filter__btn-reset"
+                        >Restaurar</button>
+
+                        <button
+                            id="btnSearchByPrice"
+                            type="button"
+                            class="filter__btn"
+                        >Buscar</button>
+                    </div>
+                </form>
+            </aside>
+
+            <section>
+                <div class="product__resume">
+                    <p>Total <span class="product__total">0</span> productos</p>
+                    <hr>
+                    <div class="product__pages">
+                    </div>
+                </div>
+
+                <div class="loading loading__1">
+                    <div></div>
+                </div>
+
+                <div id="article__container" class="article__container">
+                </div>
+
+                <div id="product__resume-footer" class="product__resume">
+                    <p>Total <span class="product__total">15</span> productos</p>
+                    <hr>
+                    <div class="product__pages">
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="shop__list">
+        <h4>Mi carrito de compras</h4>
+        <ul class="shop__list">
+        </ul>
+
+        <p id="shop__total">
+            <label>Total:</label>
+            <span id="totalAmount">$0</span>
+        </p>
+        <hr>
+
+        <div class="shop__buttons">
+            <button
+                id="btnWhatsapp"
+                type="button"
+                onclick="buyFromWhatsapp()"
+            >
+                <img
+                    src="./img/whatsapp.png"
+                    alt="Ordenar por Whatsapp"
+                />
+
+                Ordenar por Whatsapp
+            </button>
+
+            <button
+                type="button"
+                onclick="showShopList(false)"
+            >Cerrar</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>Gracias por visitar Bsale Store</p>
+    </footer>
+</body>
+    <script src="./scripts/base.js"></script>
+    <script src="./scripts/components.js"></script>
+    <script src="./scripts/complements.js"></script>
+    <script src="./scripts/service.js"></script>
+    <script src="./scripts/listeners.js"></script>
+    <script src="./scripts/shop.js"></script>
+    <script src="./scripts/index.js"></script>
+</html>
