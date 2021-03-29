@@ -154,6 +154,10 @@ const loadProducts = (products = productList) => {
         article__container.innerHTML += html;
     });
 
+    productStorage.forEach(p => {
+        enabledContentShopAdded(p.id, true);
+    });
+
     setCategoryColor();
     addListenersMinSum();
 }

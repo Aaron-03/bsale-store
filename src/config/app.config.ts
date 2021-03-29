@@ -21,24 +21,24 @@ export default class App {
         this.routes();
     }
 
-    settings() {
+    settings() { // Application settings
         dotenv.config();
         this.app.set('port', process.env.PORT || this.port || 4000);
     }
 
-    routes() {
+    routes() { // Application routes
         this.app.use('/api/products', ProductRoutes);
         this.app.use('/api/categories', CategoryRoutes);
     }
 
-    middlewares() {
+    middlewares() { // Application middlewares
         this.app.use(morgan('dev'));
         this.app.use(express.static(path.join(__dirname, '/../../public')));
         this.app.use(express.json());
         this.app.use(express.urlencoded({ extended: false }));
     }
 
-    listen() {
+    listen() { // Run server
         this.app.listen(this.app.get('port'), () => {
             console.log(`Run in port -p ${ this.app.get('port') }`);
         });

@@ -4,15 +4,11 @@ import CategoryController from '../controllers/category.controller';
 const router: Router = Router();
 const categoryController = new CategoryController();
 
-
+/**
+ * Single path to get filtered categories
+ */
 router.get(
     '/',
-    [],
-    categoryController.getCategories
-);
-
-router.get(
-    '/prices',
     [],
     categoryController.getCategories
 );

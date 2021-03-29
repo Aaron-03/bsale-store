@@ -122,10 +122,10 @@ const shopItemComponent = ({
         </div>
 
         <div class="shop__item-footer">
-            <label>Producto Chévere</label>
-            <p>Category: ${ Category.name }</p>
+            <label>${ name }</label>
+            <p>Categoría: ${ Category.name }</p>
             <p>Unidades: ${ quantity }</p>
-            <p>Price: ${ price }</p>
+            <p>Precio: ${ price }</p>
         </div>
     </li>
     `

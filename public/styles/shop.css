@@ -16,6 +16,10 @@ Styles of the list of products to buy
     z-index: 100;
 }
 
+#shop__list.active {
+    right: 0;
+}
+
 /* Products basket title */
 #shop__list h4 {
     text-align: center;
@@ -49,7 +53,7 @@ Styles of the list of products to buy
 /* Basket item image */
 .shop__item-header img {
     width: 100%;
-    height: 100%;
+    height: auto;
 }
 
 /* Basket item features */

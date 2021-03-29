@@ -11,5 +11,6 @@
 #container main {
     display: flex;
     justify-content: center;
+    padding: 1rem;
     padding-bottom: 5rem;
 }

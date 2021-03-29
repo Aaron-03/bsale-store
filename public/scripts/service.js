@@ -19,7 +19,7 @@ const searchByName = async ({ target }) => {
 const getCategories = async () => {
     try {
         showLoading(0, true);
-        const response = await fetch('http://localhost:4000/api/categories');
+        const response = await fetch(`http://${ HOST }/api/categories`);
         const data = await response.json();
 
         if(data.success === true) {
@@ -42,13 +42,14 @@ const sendData = async (name = '', category = '', prices = '', page = 1) => {
     showLoading(1, true);
 
     try {
-        const URL = `http://localhost:4000/api/products/?name=${ name }&category=${ category }&prices=${ prices }&page=${ page }`;
+        const URL = `http://${ HOST }/api/products/?name=${ name }&category=${ category }&prices=${ prices }&page=${ page }`;
 
         const response = await fetch(URL);
         const data = await response.json();
 
         if(data.success === false) {
             result.error = true;
+            alert('Ops! Intente nuevamente');
             return result;
         }
 
@@ -58,7 +59,7 @@ const sendData = async (name = '', category = '', prices = '', page = 1) => {
     } catch (error) {
         result.error = true;
         showLoading(1, false);
-        alert('Error al obtener productos');
+        alert('Ops! Intente nuevamente');
     }
     showLoading(1, false);
     return result;

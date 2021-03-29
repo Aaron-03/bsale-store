@@ -33,6 +33,7 @@
 /* Product image */
 .article__cover img {
     width: 100%;
+    height: auto;
     object-fit: cover;
 }
 

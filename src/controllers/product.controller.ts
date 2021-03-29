@@ -5,115 +5,73 @@ import { PRODUCT_LIMIT, startPage } from "../helpers/product.helper";
 import Category from "../models/category.model";
 import Product from "../models/product.model";
 
-
+/**
+ * Class containing the functions to handle the products
+ */
 export default class ProductController {
 
-
-    async getProductsByName(req: Request, res: Response) {
+    // Search products by (name, category, price range and page)
+    async getProductsByAtribute(req: Request, res: Response) {
         try {
 
+            // Validate if there was an error with the fields
             if(validationResult(req).array().length > 0) {
                 return res.json({
                     success: false,
                     msg: 'Error al obtener productos'
                 });
             }
-
-            const name: string = req.query.name as string || '';
-            const page: number = parseInt(req.query.page as string) || 1;
-
-            const products: Product[] = await Product.findAll({
-                where: {
-                    name: {
-                        [ Op.like ]: `%${ name }%`
-                    }
-                },
-                limit: PRODUCT_LIMIT,
-                offset: startPage(page)
-            });
-
-
-            return res.json({
-                success: true,
-                msg: 'Productos cargados correctamente',
-                products
-            });
-
-        } catch (error) {
-            console.log(error);
-            return res.json({
-                success: false,
-                msg: 'Error al obtener productos por nombre'
-            });
-        }
-    }
-
-    async getProductsByAtribute(req: Request, res: Response) {
-        try {
             
-            const name: string = req.query.name as string || '';
-            const categoryId: string = req.query.category as string || '';
-            const prices: string = req.query.prices as string || '';
-            const page: number = parseInt(req.query.page as string) || 1;
+            /********************* Input fields ************************/
+            const name: string = req.query.name as string;
+            const categoryId: string = req.query.category as string;
+            const prices: string = req.query.prices as string;
+            const page: number = parseInt(req.query.page as string);
+            /********************* END ************************/
 
+            // Separate the maximum and minimum price
             const arr_prices: string[] = prices.split('_');
-
             const price_start: number = parseInt(arr_prices[0]) || 0;
             const price_end: number = parseInt(arr_prices[1]) || 100000;
 
-            console.log('DATOS CORRECTOS: ', name, categoryId, prices)
-
+            // Search a category by its id
             const category = await Category.findByPk(categoryId) || null;
 
-            let result: any = {};
-
-            if(category === null) {
-                result = await Product.findAndCountAll({
-                    include: Category,
-                    where: {
-                        name: {
-                            [ Op.like ]: `%${ name }%`
-                        },
-                        price: {
-                            [ Op.between ]: [ price_start, price_end ]
-                        },
+            // Default search options
+            let options: any = {
+                include: Category,
+                where: {
+                    name: {
+                        [ Op.like ]: `%${ name }%` // name like '%name%'
                     },
-                    limit: PRODUCT_LIMIT,
-                    offset: startPage(page)
-                });
-            } else {
-                result = await Product.findAndCountAll({
-                    include: Category,
-                    where: {
-                        name: {
-                            [ Op.like ]: `%${ name }%`
-                        },
-                        category: category?.id,
-                        price: {
-                            [ Op.between ]: [ price_start, price_end ]
-                        },
+                    price: {
+                        [ Op.between ]: [ price_start, price_end ] // min between max
                     },
-                    limit: PRODUCT_LIMIT,
-                    offset: startPage(page)
-                });
+                },
+                limit: PRODUCT_LIMIT,
+                offset: startPage(page)
             }
+
+            // If category exists, we add it to the search
+            if(category !== null) {
+                options.where.category = category?.id;
+            }
+
+            // Get the search result
+            let result = await Product.findAndCountAll(options);
 
             return res.json({
                 success: true,
                 msg: 'Productos cargados correctamente',
-                name,
-                categoryId,
-                prices,
-                total: result.count,
-                products: result.rows
+                total: result.count, // Total quantity of products
+                products: result.rows // Products matching search criteria
             });
-
 
         } catch (error) {
             console.log(error);
             return res.json({
                 success: false,
-                msg: 'Error al obtener productos por nombre'
+                msg: 'Error al obtener productos'
             });
         }
     }

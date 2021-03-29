@@ -105,6 +105,6 @@ const buyFromWhatsapp = () => {
 }
 
 // Show or hide the shopping cart
-const showShopList = (show = true) => {
-    shop__list_id.style.right = show === true ? '0' : '-100%';
+const showShopList = () => {
+    shop__list_id.classList.toggle('active');
 }

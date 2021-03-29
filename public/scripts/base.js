@@ -10,6 +10,8 @@
  let productList = []; // Product list obtained
  let productStorage = []; // Products for save in local storage
 
+ const HOST = window.location.host;
+
  // Color list for categories
  let categoryColors = [
      { catId: 1, color: 'color_1' },
