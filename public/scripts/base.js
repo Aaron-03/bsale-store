@@ -11,6 +11,7 @@
  let productStorage = []; // Products for save in local storage
 
  const HOST = window.location.host;
+ const PROTOCOL = window.location.protocol;
 
  // Color list for categories
  let categoryColors = [

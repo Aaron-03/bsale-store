@@ -19,7 +19,7 @@ const searchByName = async ({ target }) => {
 const getCategories = async () => {
     try {
         showLoading(0, true);
-        const response = await fetch(`http://${ HOST }/api/categories`);
+        const response = await fetch(`${ PROTOCOL }//${ HOST }/api/categories`);
         const data = await response.json();
 
         if(data.success === true) {
@@ -42,7 +42,7 @@ const sendData = async (name = '', category = '', prices = '', page = 1) => {
     showLoading(1, true);
 
     try {
-        const URL = `http://${ HOST }/api/products/?name=${ name }&category=${ category }&prices=${ prices }&page=${ page }`;
+        const URL = `${ PROTOCOL }//${ HOST }/api/products/?name=${ name }&category=${ category }&prices=${ prices }&page=${ page }`;
 
         const response = await fetch(URL);
         const data = await response.json();
